@@ -1,6 +1,6 @@
 FROM nvidia/cudagl:10.1-devel-ubuntu16.04
 # >> Visteon Proxy Setup Start
-COPY ZscalerRootCA.crt /usr/local/share/ca-certificates/ZscalerRootCA.crt
+#COPY ZscalerRootCA.crt /usr/local/share/ca-certificates/ZscalerRootCA.crt
 RUN update-ca-certificates
 
 ARG proxy
@@ -179,6 +179,7 @@ RUN apt install -y libopenblas-dev libxaw7-dev liborocos-kdl1.3 libpoco-dev libp
 ENV LD_LIBRARY_PATH='/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH' \
     BLAS_INCLUDE='/usr/local/cuda/targets/x86_64-linux/include' \
     BLAS_LIB='/usr/local/cuda/targets/x86_64-linux/lib' \
-    CPLUS_INCLUDE_PATH='/usr/local/cuda/include:$CPLUS_INCLUDE_PATH'
+    CPLUS_INCLUDE_PATH='/usr/local/cuda/include:$CPLUS_INCLUDE_PATH' \
+    GLOG_LIBRARY='/usr/lib'
 WORKDIR /docker10.1
 
